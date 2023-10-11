@@ -133,6 +133,64 @@ def process_condition(condition):
             return process_condition(user_input)
 
     elif condition == '3': #Row Transposition cipher start----------------------
+        print('1.Encryption')
+        print('2.Decryption')
+
+        choice = input("Enter Number:")
+
+        if choice == '1':
+            def encryptMessage(key, message): 
+                cipherText = [''] * key
+
+                for column in range(key):
+                    currentIndex = column
+
+                    while currentIndex < len(message):
+                        cipherText[column] += message[currentIndex]
+                        currentIndex += key
+
+                return ''.join(cipherText)
+
+            plainText = input("Enter plaintext: ")
+            keyVal = int(input("Enter keyValue:"))
+
+            cipher = encryptMessage(keyVal, plainText)
+            print(cipher)
+            
+            return process_condition(user_input)
+
+        elif choice == '2':
+            def decryptMessage(key, message):
+                numColumns = int(math.ceil(len(message) / key))
+                numRows = key
+                numEmptyBoxes = (numColumns * numRows) - len(message)
+
+                plaintext = [''] * numColumns
+
+                col = 0
+                row = 0
+
+                for symbol in message:
+                    plaintext[col] += symbol
+                    col += 1
+
+                    if (col == numColumns) or (col == numColumns - 1 and row >= numRows - numEmptyBoxes):
+                        col = 0
+                        row += 1
+
+                return ''.join(plaintext)
+
+            cipherText = input("Enter ciphertext: ")
+            keyVal = int(input("Enter keyValue: "))
+
+            plainText = decryptMessage(keyVal, cipherText)
+
+            print(plainText)
+            return process_condition(user_input)
+
+        else:
+            print('Invalid condition')
+            return process_condition(user_input)
 
     elif condition == '4': #Playfair cipher start------------------------------
         print('1.Encryption')
