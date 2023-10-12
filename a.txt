@@ -10,13 +10,13 @@ print('4.Playfair Cipher\n')
 
 def process_condition(condition):
 
-    if condition == '1': #playfair cipher start-----------
+    if condition == '1': #Ceaser cipher start-----------
         print('1.Encryption')
         print('2.Decryption')
 
         choice = input('Enter Number:')
 
-        if choice == '1': #playfair cipher encryption----------------
+        if choice == '1': #Ceaser cipher encryption----------------
 
                 plaintext = input("Enter plaintext: ")
                 key = int(input("Enter Key value: "))
@@ -33,7 +33,7 @@ def process_condition(condition):
                 return process_condition(user_input)
 
 
-        elif choice == '2': #playfair cipher decryption---------------
+        elif choice == '2': #Ceaser cipher decryption---------------
 
                 ciphertext = input("Enter ciphertext: ")
                 key = int(input("Enter Key value: "))
@@ -156,7 +156,7 @@ def process_condition(condition):
 
             cipher = encryptMessage(keyVal, plainText)
             print(cipher)
-            
+
             return process_condition(user_input)
 
         elif choice == '2':
